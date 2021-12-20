@@ -37,11 +37,20 @@ public class Main {
         }
         System.out.println(arrayList);
 
-        BubbleSorted bubbleSorted = new BubbleSorted(arrayList);
-        bubbleSorted.sortToMax();
+        ArrayList<String> arrayList2 = new ArrayList<>();
+        arrayList2.add("22");
+        arrayList2.add("23");
+
+
+        BubbleSorted.sortToMin(arrayList);
         System.out.println(arrayList);
-        bubbleSorted.sortToMin();
+        BubbleSorted.sortToMax(arrayList);
         System.out.println(arrayList);
+
+
+/*        BubbleSorted.sortToMax(arrayList2);
+        System.out.println(arrayList2);*/
     }
 }
+
 

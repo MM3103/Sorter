@@ -1,41 +1,49 @@
 package prog;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
-public class BubbleSorted {
+public class BubbleSorted<E> {
+    ArrayList<E> arrayList;
 
-    ArrayList<Integer> arrayList = new ArrayList<>();
-    int size = 0;
-
-    public BubbleSorted(ArrayList<Integer> arrayList) {
-        this.arrayList = arrayList;
-        this.size=arrayList.size();
-    }
-
-    public ArrayList<Integer> getArrayList() {
-        return arrayList;
-    }
-
-    public void setArrayList(ArrayList<Integer> arrayList) {
+    public BubbleSorted(ArrayList<E> arrayList) {
         this.arrayList = arrayList;
     }
 
-    public int getSize() {
-        return size;
+    private static int compare(Number a,Number b ){
+        if(a instanceof Integer && b instanceof Integer){
+            return ((Integer) a).compareTo((Integer) b);
+        }
+        else if(a instanceof Float && b instanceof Float){
+            ((Float) a).compareTo((Float) b);;
+        }
+        else if(a instanceof Double && b instanceof Double){
+            ((Double) a).compareTo((Double) b);
+        }
+        else if(a instanceof Short && b instanceof Short){
+            ((Short) a).compareTo((Short) b);
+        }
+        else if(a instanceof Byte && b instanceof Byte){
+            ((Byte) a).compareTo((Byte) b);
+        }
+        else if(a instanceof Long && b instanceof Long){
+            ((Long) a).compareTo((Long) b);
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
+        return 0;
     }
 
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    public void sortToMin(){
+    public static<E> void sortToMin(ArrayList<E> arrayList){
+        if(!(arrayList.get(0) instanceof Number )){ throw new IllegalArgumentException();}
         boolean ready = false;
         while (!ready) {
             ready = true;
-            for (int i = 0; i < this.getSize() - 1; i++) {
-                if (arrayList.get(i) < arrayList.get(i + 1)) {
-                    int temp = arrayList.get(i);
-                    arrayList.set(i, arrayList.get(i + 1));
+            for (int i = 0; i < arrayList.size() - 1; i++) {
+                if (compare((Number) arrayList.get(i),(Number) arrayList.get(i + 1))<0 ) {
+                    E temp = (E) arrayList.get(i);
+                    arrayList.set(i,arrayList.get(i + 1));
                     arrayList.set(i + 1, temp);
                     ready = false;
                 }
@@ -43,14 +51,16 @@ public class BubbleSorted {
         }
 
     }
-    public void sortToMax(){
+    public static<E> void sortToMax(ArrayList<E> arrayList){
+        if(!(arrayList.get(0) instanceof Number )){
+            throw new IllegalArgumentException();}
         boolean ready = false;
         while (!ready) {
             ready = true;
-            for (int i = 0; i < this.getSize() - 1; i++) {
-                if (arrayList.get(i) > arrayList.get(i + 1)) {
-                    int temp = arrayList.get(i);
-                    arrayList.set(i, arrayList.get(i + 1));
+            for (int i = 0; i < arrayList.size() - 1; i++) {
+                if (compare((Number) arrayList.get(i),(Number) arrayList.get(i + 1))>0) {
+                    E temp = (E) arrayList.get(i);
+                    arrayList.set(i,arrayList.get(i + 1));
                     arrayList.set(i + 1, temp);
                     ready = false;
                 }
