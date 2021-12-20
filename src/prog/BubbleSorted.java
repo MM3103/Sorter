@@ -9,7 +9,7 @@ public class BubbleSorted<E> {
     public BubbleSorted(ArrayList<E> arrayList) {
         this.arrayList = arrayList;
     }
-
+//
     private static int compare(Number a,Number b ){
         if(a instanceof Integer && b instanceof Integer){
             return ((Integer) a).compareTo((Integer) b);

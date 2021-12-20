@@ -29,7 +29,7 @@ public class Main {
             }
         }
         System.out.println(arrayList);*/
-
+//
         ArrayList<Integer> arrayList = new ArrayList<>();
         Random r = new Random();
         for (int i = 0; i < 20; i++) {
